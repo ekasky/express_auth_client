@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
 
@@ -7,6 +8,7 @@ export default function Home() {
         <div>
 
             <h3>Homepage</h3>
+            <Button>Click Me</Button>
 
         </div>
 
