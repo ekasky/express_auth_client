@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
@@ -25,6 +25,7 @@ import {
 import { FaBars, FaChevronDown } from "react-icons/fa6";
 
 import logo from "../assets/logos/bear.png"
+import { WiSnow } from "react-icons/wi";
 
 
 const programmingComponents:{title: string; href: string; description: string;}[] = [
@@ -134,6 +135,20 @@ const projectComponents:{title: string; href: string; description: string;}[] = 
 
 export default function Navbar() {
 
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
+
+    useEffect(() => {
+
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 600);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+
+    },[]);
+
     return (
 
         <header className="shadow-xl px-8 py-2">
@@ -147,9 +162,7 @@ export default function Navbar() {
 
                 </div>
 
-
-                <MobileMenu />
-
+                {isMobile ? <MobileMenu /> : <p>Desktop Menu</p>}
 
             </div>
 
