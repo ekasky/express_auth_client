@@ -22,7 +22,17 @@ import {
     CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 
-import { FaBars, FaChevronDown } from "react-icons/fa6";
+import {
+    NavigationMenu,
+    NavigationMenuContent,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+
+import { FaBars, FaChevronDown, FaCircleNodes } from "react-icons/fa6";
 
 import logo from "../assets/logos/bear.png"
 
@@ -160,7 +170,7 @@ export default function Navbar() {
                         <img src={logo} alt="logo image" width={75} />
                     </Link>
 
-                    {isMobile >= mobileWidth && <p>Test</p>}
+                    {isMobile >= mobileWidth && <DesktopMenu />}
 
                 </div>
 
@@ -341,6 +351,153 @@ function DesktopLogin() {
             <Button className="" variant="navBtn">Signup</Button>
 
         </div>
+
+    );
+
+}
+
+function DesktopMenu() {
+
+    return (
+
+        <NavigationMenu>
+
+                        <NavigationMenuList>
+
+
+                            <NavigationMenuItem>
+
+                                <NavigationMenuTrigger>Projects</NavigationMenuTrigger>
+
+                                <NavigationMenuContent>
+
+                                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+
+                                        { projectComponents.map( (component, key) => (
+
+                                            <li key={key} className="flex">
+                                                <NavigationMenuLink asChild>
+                                                    <Link to={component.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                                                        
+                                                        <h3 className="font-semibold">{component.title}</h3>
+                                                        <p className="text-slate-500 text-sm">{component.description}</p>
+
+                                                    </Link>
+                                                </NavigationMenuLink>
+                                            </li>
+
+                                        ))}
+
+                                        <li className="col-span-full bg-gray-100 p-4 rounded-md">
+
+                                            <NavigationMenuLink asChild>
+
+                                                <Link to="/other-projects">
+                                                    <h3 className="font-semibold">Other Projects</h3>
+                                                    <p className="text-slate-500 text-sm">See all other projects here</p>
+                                                </Link>
+
+                                            </NavigationMenuLink>
+
+                                        </li>
+
+                                    </ul>
+
+                                </NavigationMenuContent>
+
+                            </NavigationMenuItem>
+
+
+                             <NavigationMenuItem>
+
+                                <NavigationMenuTrigger>Website Development</NavigationMenuTrigger>
+
+                                <NavigationMenuContent>
+
+                                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                                            
+                                        <li className="row-span-4">
+
+                                            <NavigationMenuLink asChild>
+
+                                                <Link to="/webdev-getting-started" className="flex h-full w-full select-none flex-col justify-center rounded-md bg-gray-100 p-6 no-underline outline-none focus:shadow-md">
+
+                                                    <FaCircleNodes className="text-3xl" />
+                                                    <h3 className="font-semibold mt-2 text-xl">Getting Started</h3>
+                                                    <p className="text-slate-500 text-sm">Start here if you are brand new to web development</p>
+
+                                                </Link>
+
+                                            </NavigationMenuLink>
+
+                                        </li>
+
+                                        { websiteDevelopmentComponents.map( (component, key) => (
+
+                                            <li key={key} className="">
+                                                <NavigationMenuLink asChild>
+                                                    <Link to={component.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                                                        
+                                                        <h3 className="font-semibold">{component.title}</h3>
+                                                        <p className="text-slate-500 text-sm">{component.description}</p>
+
+                                                    </Link>
+                                                </NavigationMenuLink>
+                                            </li>
+
+                                        ))}
+
+                                    </ul>
+
+                                </NavigationMenuContent>
+
+                            </NavigationMenuItem>
+
+
+                            <NavigationMenuItem>
+
+                                <NavigationMenuTrigger>Programming Langauges</NavigationMenuTrigger>
+
+                                <NavigationMenuContent>
+
+                                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+
+                                        { programmingComponents.map( (component, key) => (
+
+                                            <li key={key} className="flex">
+                                                <NavigationMenuLink asChild>
+                                                    <Link to={component.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                                                        
+                                                        <h3 className="font-semibold">{component.title}</h3>
+                                                        <p className="text-slate-500 text-sm">{component.description}</p>
+
+                                                    </Link>
+                                                </NavigationMenuLink>
+                                            </li>
+
+                                        ))}
+
+                                    </ul>
+
+                                </NavigationMenuContent>
+
+                            </NavigationMenuItem>
+
+
+                            <NavigationMenuItem>
+
+                                <Link to="/about" className="">
+                                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                        About
+                                    </NavigationMenuLink>
+                                </Link>
+
+                            </NavigationMenuItem>
+
+
+                        </NavigationMenuList>
+
+                    </NavigationMenu>
 
     );
 
