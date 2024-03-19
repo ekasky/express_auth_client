@@ -25,7 +25,6 @@ import {
 import { FaBars, FaChevronDown } from "react-icons/fa6";
 
 import logo from "../assets/logos/bear.png"
-import { WiSnow } from "react-icons/wi";
 
 
 const programmingComponents:{title: string; href: string; description: string;}[] = [
@@ -135,12 +134,12 @@ const projectComponents:{title: string; href: string; description: string;}[] = 
 
 export default function Navbar() {
 
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
 
     useEffect(() => {
 
         const handleResize = () => {
-            setIsMobile(window.innerWidth < 600);
+            setIsMobile(window.innerWidth <= 1024);
         };
 
         window.addEventListener("resize", handleResize);
@@ -197,7 +196,7 @@ function MobileMenu() {
             <Button variant="outline"><FaBars /></Button>
         </SheetTrigger>
 
-        <SheetContent>
+        <SheetContent className="overflow-y-auto">
 
             <SheetHeader>
 
