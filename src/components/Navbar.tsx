@@ -1,51 +1,55 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { cn } from "@/lib/utils";
+
+
+import { Button } from "@/components/ui/button"
+
 import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+
+import {
+    Collapsible,
+    CollapsibleContent,
+    CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+
+import { FaBars, FaChevronDown } from "react-icons/fa6";
+
+import logo from "../assets/logos/bear.png"
 
 
-import { FaCircleNodes } from "react-icons/fa6";
-
-import logo from "../assets/logos/bear.png";
-import clang from "../assets/icons/clang.png";
-import cpp from "../assets/icons/cpp.png";
-import java from "../assets/icons/java.png";
-import python from "../assets/icons/python.jpg";
-import javascript from "../assets/icons/javascript.png";
-
-const programmingComponents:{title: string; href: string; description: string; icon: React.ReactElement}[] = [
+const programmingComponents:{title: string; href: string; description: string;}[] = [
 
     {
         title: "C",
         href: "/c",
-        icon: <img src={clang} alt="C Lang" width={35} />,
         description: "How to code in the C programming language"
     },
 
     {
         title: "C++",
         href: "/cpp",
-        icon: <img src={cpp} alt="C++" width={35} />,
         description: "How to code in the C++ prorgramming langauge"
     },
 
     {
         title: "Java",
         href: "/java",
-        icon: <img src={java} alt="Java" width={35} />,
         description: "How to code in the Java programming langauge"
     },
 
     {
         title: "Python",
         href: "/python",
-        icon: <img src={python} alt="Python" width={35} />,
         description: "How to code in the Python programming langauge"
     },
 
@@ -53,7 +57,6 @@ const programmingComponents:{title: string; href: string; description: string; i
 
         title: "JavaScript",
         href: "/javascript",
-        icon: <img src={javascript} alt="JavaScript" width={35} />,
         description: "How to code in the JavaScript programming langauge"
 
     }
@@ -135,156 +138,173 @@ export default function Navbar() {
 
         <header className="shadow-xl px-8 py-2">
 
-            <div className="flex flex-row justify-between items-center max-w-[1400px] mx-auto my-0 ">
+            <div className="flex flex-row justify-between items-center md:max-w-[1400px] md:mx-auto md:my-0">
 
                 <div className="flex gap-8">
                     <Link to="/">
                         <img src={logo} alt="logo image" width={75} />
                     </Link>
 
-                    <NavigationMenu>
-
-                        <NavigationMenuList>
-
-
-                            <NavigationMenuItem>
-
-                                <NavigationMenuTrigger>Projects</NavigationMenuTrigger>
-
-                                <NavigationMenuContent>
-
-                                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-
-                                        { projectComponents.map( (component, key) => (
-
-                                            <li key={key} className="flex">
-                                                <NavigationMenuLink asChild>
-                                                    <Link to={component.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                                                        
-                                                        <h3 className="font-semibold">{component.title}</h3>
-                                                        <p className="text-slate-500 text-sm">{component.description}</p>
-
-                                                    </Link>
-                                                </NavigationMenuLink>
-                                            </li>
-
-                                        ))}
-
-                                        <li className="col-span-full bg-gray-100 p-4 rounded-md">
-
-                                            <NavigationMenuLink asChild>
-
-                                                <Link to="/other-projects">
-                                                    <h3 className="font-semibold">Other Projects</h3>
-                                                    <p className="text-slate-500 text-sm">See all other projects here</p>
-                                                </Link>
-
-                                            </NavigationMenuLink>
-
-                                        </li>
-
-                                    </ul>
-
-                                </NavigationMenuContent>
-
-                            </NavigationMenuItem>
-
-
-                             <NavigationMenuItem>
-
-                                <NavigationMenuTrigger>Website Development</NavigationMenuTrigger>
-
-                                <NavigationMenuContent>
-
-                                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                                            
-                                        <li className="row-span-4">
-
-                                            <NavigationMenuLink asChild>
-
-                                                <Link to="/webdev-getting-started" className="flex h-full w-full select-none flex-col justify-center rounded-md bg-gray-100 p-6 no-underline outline-none focus:shadow-md">
-
-                                                    <FaCircleNodes className="text-3xl" />
-                                                    <h3 className="font-semibold mt-2 text-xl">Getting Started</h3>
-                                                    <p className="text-slate-500 text-sm">Start here if you are brand new to web development</p>
-
-                                                </Link>
-
-                                            </NavigationMenuLink>
-
-                                        </li>
-
-                                        { websiteDevelopmentComponents.map( (component, key) => (
-
-                                            <li key={key} className="">
-                                                <NavigationMenuLink asChild>
-                                                    <Link to={component.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                                                        
-                                                        <h3 className="font-semibold">{component.title}</h3>
-                                                        <p className="text-slate-500 text-sm">{component.description}</p>
-
-                                                    </Link>
-                                                </NavigationMenuLink>
-                                            </li>
-
-                                        ))}
-
-                                    </ul>
-
-                                </NavigationMenuContent>
-
-                            </NavigationMenuItem>
-
-
-                            <NavigationMenuItem>
-
-                                <NavigationMenuTrigger>Programming Langauges</NavigationMenuTrigger>
-
-                                <NavigationMenuContent>
-
-                                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-
-                                        { programmingComponents.map( (component, key) => (
-
-                                            <li key={key} className="flex">
-                                                <NavigationMenuLink asChild>
-                                                    <Link to={component.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                                                        
-                                                        <h3 className="font-semibold text-3xl">{component.icon}</h3>
-                                                        <p className="text-slate-500 text-sm">{component.description}</p>
-
-                                                    </Link>
-                                                </NavigationMenuLink>
-                                            </li>
-
-                                        ))}
-
-                                    </ul>
-
-                                </NavigationMenuContent>
-
-                            </NavigationMenuItem>
-
-
-                            <NavigationMenuItem>
-
-                                <Link to="/about" className="">
-                                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                        About
-                                    </NavigationMenuLink>
-                                </Link>
-
-                            </NavigationMenuItem>
-
-
-                        </NavigationMenuList>
-
-                    </NavigationMenu>
                 </div>
+
+
+                <MobileMenu />
+
 
             </div>
 
         </header>
+
+    );
+
+}
+
+
+function MobileMenu() {
+
+    const [sheetOpen, setSheetOpen] = useState(false);
+    const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+    const [isWebDevOpen, setIsWebDevOpen] = useState(false);
+    const [isProgrammingOpen, setIsProgrammingOpen] = useState(false);
+
+    const closeAll = () => {
+
+        setSheetOpen(!sheetOpen);
+        setIsProjectsOpen(false);
+        setIsWebDevOpen(false);
+        setIsProgrammingOpen(false);
+
+    }
+
+    return (
+        
+        <Sheet open={sheetOpen} onOpenChange={closeAll}>
+
+        <SheetTrigger asChild>
+            <Button variant="outline"><FaBars /></Button>
+        </SheetTrigger>
+
+        <SheetContent>
+
+            <SheetHeader>
+
+                <SheetTitle>Navigation</SheetTitle>
+                
+                <SheetDescription>
+                    Browse all the projects and tutorials I have created
+                </SheetDescription>
+
+            </SheetHeader>
+
+            
+            <Collapsible
+            open={isProjectsOpen}
+            onOpenChange={() => { setIsProjectsOpen(!isProjectsOpen); setIsWebDevOpen(false); setIsProgrammingOpen(false); }}
+            className="mt-4"
+            >
+
+              <CollapsibleTrigger className="text-xl w-full flex justify-between items-center border-b border-gray-300">
+                Projects 
+                <FaChevronDown size={12} />
+              </CollapsibleTrigger>
+
+              <CollapsibleContent className={cn('overflow-hidden data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up', "")}>
+                
+                <div className="flex flex-col gap-4 mt-4">
+                    {projectComponents.map( (component, key) =>(
+
+                        <SheetClose asChild key={key}>
+                            <Link to={component.href} className="bg-gray-200 p-4 rounded-md" onClick={closeAll}>
+                                <h3 className="font-semibold">{component.title}</h3>
+                                <p className="text-gray-600">{component.description}</p>
+                            </Link>
+                        </SheetClose>
+
+                    ))}
+                </div>
+
+              </CollapsibleContent>
+
+            </Collapsible>
+
+            <Collapsible
+            open={isWebDevOpen}
+            onOpenChange={() => { setIsProjectsOpen(false); setIsWebDevOpen(!isWebDevOpen); setIsProgrammingOpen(false); }}
+            className="mt-4"
+            >
+
+              <CollapsibleTrigger className="text-xl w-full flex justify-between items-center border-b border-gray-300">
+                Website Development 
+                <FaChevronDown size={12} />
+              </CollapsibleTrigger>
+
+              <CollapsibleContent className={cn('overflow-hidden data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up', "")}>
+                
+                <div className="flex flex-col gap-4 mt-4">
+                    {websiteDevelopmentComponents.map( (component, key) =>(
+
+                        <SheetClose asChild key={key}>
+                            <Link to={component.href} className="bg-gray-200 p-4 rounded-md" onClick={closeAll}>
+                                <h3 className="font-semibold">{component.title}</h3>
+                                <p className="text-gray-600">{component.description}</p>
+                            </Link>
+                        </SheetClose>
+
+                    ))}
+                </div>
+
+              </CollapsibleContent>
+
+            </Collapsible>
+
+
+            <Collapsible
+            open={isProgrammingOpen}
+            onOpenChange={() => { setIsProjectsOpen(false); setIsWebDevOpen(false); setIsProgrammingOpen(!isProgrammingOpen); }}
+            className="mt-4"
+            >
+
+              <CollapsibleTrigger className="text-xl w-full flex justify-between items-center border-b border-gray-300">
+                Learn to Program 
+                <FaChevronDown size={12} />
+              </CollapsibleTrigger>
+
+              <CollapsibleContent className={cn('overflow-hidden data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up', "")}>
+                
+                <div className="flex flex-col gap-4 mt-4">
+                    {programmingComponents.map( (component, key) =>(
+
+                        <SheetClose asChild key={key}>
+                            <Link to={component.href} className="bg-gray-200 p-4 rounded-md" onClick={closeAll}>
+                                <h3 className="font-semibold">{component.title}</h3>
+                                <p className="text-gray-600">{component.description}</p>
+                            </Link>
+                        </SheetClose>
+
+                    ))}
+                </div>
+
+              </CollapsibleContent>
+
+            </Collapsible>
+
+            
+
+
+            <SheetFooter className="mt-4 flex flex-row gap-3">
+                
+                <SheetClose asChild>
+                    <Button className="flex-1 rounded-md" variant="secondary">Login</Button>
+                </SheetClose>
+                <SheetClose asChild>
+                    <Button className="flex-1 rounded-md">Register</Button>
+                </SheetClose>
+
+            </SheetFooter>
+            
+        </SheetContent>
+
+    </Sheet>
 
     );
 
