@@ -196,100 +196,103 @@ function MobileMenu() {
 
             </SheetHeader>
 
-            
-            <Collapsible
-            open={isProjectsOpen}
-            onOpenChange={() => { setIsProjectsOpen(!isProjectsOpen); setIsWebDevOpen(false); setIsProgrammingOpen(false); }}
-            className="mt-4"
-            >
+            <div className="flex flex-col gap-2">
+                <Collapsible
+                open={isProjectsOpen}
+                onOpenChange={() => { setIsProjectsOpen(!isProjectsOpen); setIsWebDevOpen(false); setIsProgrammingOpen(false); }}
+                className="mt-4"
+                >
 
-              <CollapsibleTrigger className="text-xl w-full flex justify-between items-center border-b border-gray-300">
-                Projects 
-                <FaChevronDown size={12} />
-              </CollapsibleTrigger>
+                <CollapsibleTrigger className="text-xl w-full flex justify-between items-center border-b border-gray-300">
+                    Projects 
+                    <FaChevronDown size={12} />
+                </CollapsibleTrigger>
 
-              <CollapsibleContent className={cn('overflow-hidden data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up', "")}>
+                <CollapsibleContent className={cn('overflow-hidden data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up', "")}>
+                    
+                    <div className="flex flex-col gap-4 mt-4">
+                        {projectComponents.map( (component, key) =>(
+
+                            <SheetClose asChild key={key}>
+                                <Link to={component.href} className="bg-gray-200 p-4 rounded-md" onClick={closeAll}>
+                                    <h3 className="font-semibold">{component.title}</h3>
+                                    <p className="text-gray-600">{component.description}</p>
+                                </Link>
+                            </SheetClose>
+
+                        ))}
+                    </div>
+
+                </CollapsibleContent>
+
+                </Collapsible>
+
+                <Collapsible
+                open={isWebDevOpen}
+                onOpenChange={() => { setIsProjectsOpen(false); setIsWebDevOpen(!isWebDevOpen); setIsProgrammingOpen(false); }}
+                className="mt-4"
+                >
+
+                <CollapsibleTrigger className="text-xl w-full flex justify-between items-center border-b border-gray-300">
+                    Website Development 
+                    <FaChevronDown size={12} />
+                </CollapsibleTrigger>
+
+                <CollapsibleContent className={cn('overflow-hidden data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up', "")}>
+                    
+                    <div className="flex flex-col gap-4 mt-4">
+                        {websiteDevelopmentComponents.map( (component, key) =>(
+
+                            <SheetClose asChild key={key}>
+                                <Link to={component.href} className="bg-gray-200 p-4 rounded-md" onClick={closeAll}>
+                                    <h3 className="font-semibold">{component.title}</h3>
+                                    <p className="text-gray-600">{component.description}</p>
+                                </Link>
+                            </SheetClose>
+
+                        ))}
+                    </div>
+
+                </CollapsibleContent>
+
+                </Collapsible>
+
+
+                <Collapsible
+                open={isProgrammingOpen}
+                onOpenChange={() => { setIsProjectsOpen(false); setIsWebDevOpen(false); setIsProgrammingOpen(!isProgrammingOpen); }}
+                className="mt-4"
+                >
+
+                <CollapsibleTrigger className="text-xl w-full flex justify-between items-center border-b border-gray-300">
+                    Learn to Program 
+                    <FaChevronDown size={12} />
+                </CollapsibleTrigger>
+
+                <CollapsibleContent className={cn('overflow-hidden data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up', "")}>
+                    
+                    <div className="flex flex-col gap-4 mt-4">
+                        {programmingComponents.map( (component, key) =>(
+
+                            <SheetClose asChild key={key}>
+                                <Link to={component.href} className="bg-gray-200 p-4 rounded-md" onClick={closeAll}>
+                                    <h3 className="font-semibold">{component.title}</h3>
+                                    <p className="text-gray-600">{component.description}</p>
+                                </Link>
+                            </SheetClose>
+
+                        ))}
+                    </div>
+
+                </CollapsibleContent>
+
+                </Collapsible>
                 
-                <div className="flex flex-col gap-4 mt-4">
-                    {projectComponents.map( (component, key) =>(
-
-                        <SheetClose asChild key={key}>
-                            <Link to={component.href} className="bg-gray-200 p-4 rounded-md" onClick={closeAll}>
-                                <h3 className="font-semibold">{component.title}</h3>
-                                <p className="text-gray-600">{component.description}</p>
-                            </Link>
-                        </SheetClose>
-
-                    ))}
-                </div>
-
-              </CollapsibleContent>
-
-            </Collapsible>
-
-            <Collapsible
-            open={isWebDevOpen}
-            onOpenChange={() => { setIsProjectsOpen(false); setIsWebDevOpen(!isWebDevOpen); setIsProgrammingOpen(false); }}
-            className="mt-4"
-            >
-
-              <CollapsibleTrigger className="text-xl w-full flex justify-between items-center border-b border-gray-300">
-                Website Development 
-                <FaChevronDown size={12} />
-              </CollapsibleTrigger>
-
-              <CollapsibleContent className={cn('overflow-hidden data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up', "")}>
+                <SheetClose asChild>
+                    <Link to="/about" className="text-xl w-full flex justify-between items-center border-b border-gray-300 mt-3">About</Link>
+                </SheetClose>
                 
-                <div className="flex flex-col gap-4 mt-4">
-                    {websiteDevelopmentComponents.map( (component, key) =>(
-
-                        <SheetClose asChild key={key}>
-                            <Link to={component.href} className="bg-gray-200 p-4 rounded-md" onClick={closeAll}>
-                                <h3 className="font-semibold">{component.title}</h3>
-                                <p className="text-gray-600">{component.description}</p>
-                            </Link>
-                        </SheetClose>
-
-                    ))}
-                </div>
-
-              </CollapsibleContent>
-
-            </Collapsible>
-
-
-            <Collapsible
-            open={isProgrammingOpen}
-            onOpenChange={() => { setIsProjectsOpen(false); setIsWebDevOpen(false); setIsProgrammingOpen(!isProgrammingOpen); }}
-            className="mt-4"
-            >
-
-              <CollapsibleTrigger className="text-xl w-full flex justify-between items-center border-b border-gray-300">
-                Learn to Program 
-                <FaChevronDown size={12} />
-              </CollapsibleTrigger>
-
-              <CollapsibleContent className={cn('overflow-hidden data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up', "")}>
-                
-                <div className="flex flex-col gap-4 mt-4">
-                    {programmingComponents.map( (component, key) =>(
-
-                        <SheetClose asChild key={key}>
-                            <Link to={component.href} className="bg-gray-200 p-4 rounded-md" onClick={closeAll}>
-                                <h3 className="font-semibold">{component.title}</h3>
-                                <p className="text-gray-600">{component.description}</p>
-                            </Link>
-                        </SheetClose>
-
-                    ))}
-                </div>
-
-              </CollapsibleContent>
-
-            </Collapsible>
-
-            
-
+            </div>
 
             <SheetFooter className="mt-4 flex flex-row gap-3">
                 
