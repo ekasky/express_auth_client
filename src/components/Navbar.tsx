@@ -134,12 +134,13 @@ const projectComponents:{title: string; href: string; description: string;}[] = 
 
 export default function Navbar() {
 
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+    const [isMobile, setIsMobile] = useState(window.innerWidth);
+    const mobileWidth = 1024;
 
     useEffect(() => {
 
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 1024);
+            setIsMobile(window.innerWidth);
         };
 
         window.addEventListener("resize", handleResize);
@@ -159,9 +160,14 @@ export default function Navbar() {
                         <img src={logo} alt="logo image" width={75} />
                     </Link>
 
+                    {isMobile >= mobileWidth && <p>Test</p>}
+
                 </div>
 
-                {isMobile ? <MobileMenu /> : <p>Desktop Menu</p>}
+                <div>
+                    { isMobile < mobileWidth && <MobileMenu /> }
+                    {isMobile >= mobileWidth && <DesktopLogin />}
+                </div>
 
             </div>
 
@@ -320,6 +326,21 @@ function MobileMenu() {
         </SheetContent>
 
     </Sheet>
+
+    );
+
+}
+
+function DesktopLogin() {
+
+    return(
+
+        <div className="flex flex-row gap-4">
+
+            <Button className="" variant="ghost">Login</Button>
+            <Button className="" variant="navBtn">Signup</Button>
+
+        </div>
 
     );
 
