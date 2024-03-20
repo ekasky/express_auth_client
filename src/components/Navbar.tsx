@@ -117,9 +117,9 @@ const projectComponents:{title: string; href: string; description: string;}[] = 
     },
 
     {
-        title: "Home Automation",
-        href: "/home-automaiton-projects",
-        description: "See projects related to home automation"
+        title: "Game Development",
+        href: "/game-dev-projects",
+        description: "See projects related to game development"
     },
 
     {
@@ -388,13 +388,13 @@ function DesktopMenu() {
 
                                         ))}
 
-                                        <li className="col-span-full bg-gray-100 p-4 rounded-md">
+                                        <li className="col-span-full bg-[#9c5f3d] text-white p-4 rounded-md">
 
                                             <NavigationMenuLink asChild>
 
                                                 <Link to="/other-projects">
                                                     <h3 className="font-semibold">Other Projects</h3>
-                                                    <p className="text-slate-500 text-sm">See all other projects here</p>
+                                                    <p className="text-slate-100 text-sm">See all other projects here</p>
                                                 </Link>
 
                                             </NavigationMenuLink>
@@ -420,11 +420,11 @@ function DesktopMenu() {
 
                                             <NavigationMenuLink asChild>
 
-                                                <Link to="/webdev-getting-started" className="flex h-full w-full select-none flex-col justify-center rounded-md bg-gray-100 p-6 no-underline outline-none focus:shadow-md">
+                                                <Link to="/webdev-getting-started" className="flex h-full w-full select-none flex-col justify-center rounded-md bg-[#9c5f3d] text-white p-6 no-underline outline-none focus:shadow-md">
 
                                                     <FaCircleNodes className="text-3xl" />
                                                     <h3 className="font-semibold mt-2 text-xl">Getting Started</h3>
-                                                    <p className="text-slate-500 text-sm">Start here if you are brand new to web development</p>
+                                                    <p className="text-slate-100 text-sm">Start here if you are brand new to web development</p>
 
                                                 </Link>
 
