@@ -396,7 +396,7 @@ function DesktopMenu() {
                                                 <NavigationMenuLink asChild>
                                                     <Link to={component.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                                                         
-                                                        <h3 className="font-semibold">{component.title}</h3>
+                                                        <h3 className="font-semibold flex items-center gap-2">{component.icon}{component.title}</h3>
                                                         <p className="text-slate-500 text-sm">{component.description}</p>
 
                                                     </Link>
@@ -455,7 +455,7 @@ function DesktopMenu() {
                                                 <NavigationMenuLink asChild>
                                                     <Link to={component.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                                                         
-                                                        <h3 className="font-semibold">{component.title}</h3>
+                                                        <h3 className="font-semibold flex items-center gap-2">{component.icon}{component.title}</h3>
                                                         <p className="text-slate-500 text-sm">{component.description}</p>
 
                                                     </Link>
@@ -485,7 +485,7 @@ function DesktopMenu() {
                                                 <NavigationMenuLink asChild>
                                                     <Link to={component.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                                                         
-                                                        <h3 className="font-semibold">{component.title}</h3>
+                                                        <h3 className="font-semibold flex items-center gap-2">{component.icon}{component.title}</h3>
                                                         <p className="text-slate-500 text-sm">{component.description}</p>
 
                                                     </Link>
