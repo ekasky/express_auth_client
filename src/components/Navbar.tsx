@@ -9,9 +9,12 @@ import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { projectComponents, websiteDevelopmentComponents, programmingComponents } from "@/navItems";
 
 import { FaBars, FaChevronDown, FaChevronUp, FaCircleNodes } from "react-icons/fa6";
-
-
 import logo from "../assets/logos/bear.png"
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger, DialogHeader } from "@/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 
 export default function Navbar() {
 
@@ -220,12 +223,214 @@ function DesktopLogin() {
 
     return(
 
-        <div className="flex flex-row gap-4">
+        <div className="flex gap-4">
+            <Dialog>
+                <DialogTrigger>
+                    <Button variant="ghost">Login</Button>
+                </DialogTrigger>
 
-            <Button className="" variant="ghost">Login</Button>
-            <Button className="" variant="navBtn">Signup</Button>
+                <DialogContent>
+                    
+                    <Tabs defaultValue="login" className="pt-4">
+
+                        <TabsList className="grid w-full grid-cols-2">
+
+                            <TabsTrigger value="login">Login</TabsTrigger>
+                            <TabsTrigger value="register">Register</TabsTrigger>
+
+                        </TabsList>
+
+                        <TabsContent value="login">
+                            
+                            <Card>
+
+                                <CardHeader>
+                                    <CardTitle>Login</CardTitle>
+
+                                    <CardDescription>
+                                        Welcome back, sign in here.
+                                    </CardDescription>
+
+                                </CardHeader>
+
+                                <CardContent className="space-y-2">
+
+                                    <div className="space-y-1">
+
+                                        <Label htmlFor="email">Email</Label>
+                                        <Input id="email" placeholder="Email" />
+
+                                    </div>
+
+                                    <div className="space-y-1">
+
+                                        <Label htmlFor="username">Password</Label>
+                                        <Input id="password" placeholder="Password" />
+
+                                    </div>
+
+                                </CardContent>
+
+                                <CardFooter>
+                                    <Button variant="navBtn">Login</Button>
+                                </CardFooter>
+
+                            </Card>
+
+                        </TabsContent>
+
+                        <TabsContent value="register">
+
+                            <Card>
+
+                                <CardHeader>
+
+                                    <CardTitle>Register</CardTitle>
+                                    <CardDescription>
+                                        Welcome, Please Register Here
+                                    </CardDescription>
+
+                                </CardHeader>
+
+                                <CardContent className="space-y-2">
+
+                                    <div className="space-y-1">
+                                        <Label htmlFor="current">Email</Label>
+                                        <Input id="email" type="email" placeholder="Email" />
+                                    </div>
+
+                                    <div className="space-y-1">
+                                        <Label htmlFor="new">Password</Label>
+                                        <Input id="new" type="password" placeholder="Password" />
+                                    </div>
+
+                                    <div className="space-y-1">
+                                        <Label htmlFor="new">Repeat Password</Label>
+                                        <Input id="new" type="password" placeholder="Password" />
+                                    </div>
+
+                                </CardContent>
+
+                                <CardFooter>
+
+                                    <Button variant="navBtn">Sign Up</Button>
+
+                                </CardFooter>
+
+                            </Card>
+
+                        </TabsContent>
+                    </Tabs>
+
+                    
+                </DialogContent>
+            </Dialog>
+
+
+            <Dialog>
+                <DialogTrigger>
+                    <Button variant="navBtn">Register</Button>
+                </DialogTrigger>
+
+                <DialogContent>
+                    
+                    <Tabs defaultValue="register" className="pt-4">
+
+                        <TabsList className="grid w-full grid-cols-2">
+
+                            <TabsTrigger value="login">Login</TabsTrigger>
+                            <TabsTrigger value="register">Register</TabsTrigger>
+
+                        </TabsList>
+
+                        <TabsContent value="login">
+                            
+                            <Card>
+
+                                <CardHeader>
+                                    <CardTitle>Login</CardTitle>
+
+                                    <CardDescription>
+                                        Welcome back, sign in here.
+                                    </CardDescription>
+
+                                </CardHeader>
+
+                                <CardContent className="space-y-2">
+
+                                    <div className="space-y-1">
+
+                                        <Label htmlFor="email">Email</Label>
+                                        <Input id="email" placeholder="Email" />
+
+                                    </div>
+
+                                    <div className="space-y-1">
+
+                                        <Label htmlFor="username">Password</Label>
+                                        <Input id="password" placeholder="Password" />
+
+                                    </div>
+
+                                </CardContent>
+
+                                <CardFooter>
+                                    <Button variant="navBtn">Login</Button>
+                                </CardFooter>
+
+                            </Card>
+
+                        </TabsContent>
+
+                        <TabsContent value="register">
+
+                            <Card>
+
+                                <CardHeader>
+
+                                    <CardTitle>Register</CardTitle>
+                                    <CardDescription>
+                                        Welcome, Please Register Here
+                                    </CardDescription>
+
+                                </CardHeader>
+
+                                <CardContent className="space-y-2">
+
+                                    <div className="space-y-1">
+                                        <Label htmlFor="current">Email</Label>
+                                        <Input id="email" type="email" placeholder="Email" />
+                                    </div>
+
+                                    <div className="space-y-1">
+                                        <Label htmlFor="new">Password</Label>
+                                        <Input id="new" type="password" placeholder="Password" />
+                                    </div>
+
+                                    <div className="space-y-1">
+                                        <Label htmlFor="new">Repeat Password</Label>
+                                        <Input id="new" type="password" placeholder="Password" />
+                                    </div>
+
+                                </CardContent>
+
+                                <CardFooter>
+
+                                    <Button variant="navBtn">Sign Up</Button>
+
+                                </CardFooter>
+
+                            </Card>
+
+                        </TabsContent>
+                    </Tabs>
+
+                    
+                </DialogContent>
+            </Dialog>
 
         </div>
+
 
     );
 
@@ -241,11 +446,8 @@ function DesktopMenu() {
 
 
                         <NavigationMenuItem>
-
                             <Link to="/" className={navigationMenuTriggerStyle()}>Home</Link>
-
                         </NavigationMenuItem>
-
 
                             <NavigationMenuItem>
 
@@ -275,7 +477,7 @@ function DesktopMenu() {
                                             <NavigationMenuLink asChild>
 
                                                 <Link to="/all-categories">
-                                                    <h3 className="font-semibold">Other Projects</h3>
+                                                    <h3 className="font-semibold">All Projects</h3>
                                                     <p className="text-slate-100 text-sm">See all other projects here</p>
                                                 </Link>
 
