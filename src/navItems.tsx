@@ -17,6 +17,12 @@ import HtmlCssJs from "./pages/webdev/HtmlCssJs";
 import MERN from "./pages/webdev/MERN";
 import NextJS from "./pages/webdev/NextJS";
 import DotNET from "./pages/webdev/DotNET";
+import Embedded from "./pages/projects/Embedded";
+import MachineLearning from "./pages/projects/MachineLearning";
+import GameDev from "./pages/projects/GameDev";
+import WebApps from "./pages/projects/WebApps";
+import DesktopApps from "./pages/projects/DesktopApps";
+import Systems from "./pages/projects/Systems";
 
 type menuComponentType = {
 
@@ -118,6 +124,7 @@ export const projectComponents:menuComponentType[] = [
     {
         title: "Embedded Systems Projects",
         href: "/embedded-systems-projects",
+        page: <Embedded />,
         icon: <GiMicrochip size={30} />,
         description: "See a list of all my embedded systems projects"
     },
@@ -125,6 +132,7 @@ export const projectComponents:menuComponentType[] = [
     {
         title: "Machine Learning",
         href: "/machine-learning-projects",
+        page: <MachineLearning />,
         icon: <FaRobot size={24} />,
         description: "See a list of all my machine learning projects"
     },
@@ -132,6 +140,7 @@ export const projectComponents:menuComponentType[] = [
     {
         title: "Game Development",
         href: "/game-dev-projects",
+        page: <GameDev />,
         icon: <FaGamepad size={24} />,
         description: "See projects related to game development"
     },
@@ -139,6 +148,7 @@ export const projectComponents:menuComponentType[] = [
     {
         title: "Web Apps",
         href: "/web-app-projects",
+        page: <WebApps />,
         icon: <FaReact size={24} />,
         description: "See projects deployed to the web"
     },
@@ -146,6 +156,7 @@ export const projectComponents:menuComponentType[] = [
     {
         title: "Desktop Apps",
         href: "/desktop-app-projects",
+        page: <DesktopApps />,
         icon: <FaDesktop size={24} />,
         description: "See projects developed to run on desktops"
     },
@@ -153,6 +164,7 @@ export const projectComponents:menuComponentType[] = [
     {
         title: "Systems Programming",
         href: "/systems-programming",
+        page: <Systems />,
         icon: <FaLinux size={24} />,
         description: "See projects about Operating Systems and writing compilers"
     },

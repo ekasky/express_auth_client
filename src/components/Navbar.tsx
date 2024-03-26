@@ -274,7 +274,7 @@ function DesktopMenu() {
 
                                             <NavigationMenuLink asChild>
 
-                                                <Link to="/other-projects">
+                                                <Link to="/all-categories">
                                                     <h3 className="font-semibold">Other Projects</h3>
                                                     <p className="text-slate-100 text-sm">See all other projects here</p>
                                                 </Link>
